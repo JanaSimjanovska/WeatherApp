@@ -1,1 +1,10 @@
-<p>location-search works!</p>
+<geoapify-geocoder-autocomplete
+  [biasByProximity]="biasByProximity"
+  [skipIcons]="false"
+  [skipDetails]="false"
+  [suggestionsFilter]="suggestionsFilter"
+  (placeSelect)="placeSelected($event)"
+  (suggestionsChange)="suggestionsChanged($event)"
+  (userInput)="userInput($event)"
+>
+</geoapify-geocoder-autocomplete>

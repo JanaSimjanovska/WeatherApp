@@ -43,7 +43,6 @@ namespace WeatherAPI.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
-            
         }
     }
 }
