@@ -5,14 +5,11 @@ import { LocationSearchComponent } from './location-search/location-search.compo
 import { GeoapifyGeocoderAutocompleteModule } from '@geoapify/angular-geocoder-autocomplete';
 
 @NgModule({
-  declarations: [LoadingSpinnerComponent, LocationSearchComponent],
-  imports: [
-    CommonModule,
-    GeoapifyGeocoderAutocompleteModule.withConfig(
-      '8ccdef2e864d4121bf138dc288a2197a'
-    ),
-  ],
-  exports: [LoadingSpinnerComponent, LocationSearchComponent],
-  entryComponents: [],
+    declarations: [LoadingSpinnerComponent, LocationSearchComponent],
+    imports: [
+        CommonModule,
+        GeoapifyGeocoderAutocompleteModule.withConfig('8ccdef2e864d4121bf138dc288a2197a'),
+    ],
+    exports: [LoadingSpinnerComponent, LocationSearchComponent]
 })
 export class SharedModule {}
