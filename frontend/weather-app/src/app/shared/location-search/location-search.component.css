@@ -1,0 +1,14 @@
+.container {
+  margin-top: 40px;
+}
+
+.button-group {
+  margin: 10px auto;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
+}

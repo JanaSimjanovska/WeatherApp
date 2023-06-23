@@ -8,15 +8,23 @@ import * as GeoapifyModels from './geoapify-models';
 })
 export class LocationSearchComponent implements OnInit {
   GeoapifyAPIKey = '8ccdef2e864d4121bf138dc288a2197a';
-  biasByProximity: GeoapifyModels.ByProximityOptions;
   suggestionsFilter: any;
+  coordinates: GeoapifyModels.ByProximityOptions;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  placeSelected(event: Event) {
-    console.log('PLACE SELECTED', event);
+  placeSelected(event: any) {
+    if (event) {
+      this.coordinates = {
+        lon: event.properties.lon,
+        lat: event.properties.lat,
+      };
+      console.log(this.coordinates);
+    } else {
+      return;
+    }
   }
 
   suggestionsChanged(event: Event) {
