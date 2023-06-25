@@ -128,6 +128,8 @@ export class AuthService {
     this.tokenExpirationTimer = null;
     this.weatherService.currentWeather.next(null);
     this.weatherService.sevenDaysWeather.next(null);
+    this.weatherService.twoDaysWeather.next(null);
+    this.weatherService.oneHourWeather.next(null);
     this.weatherService.weatherForecastMode.next(null);
     this.weatherService.searchedPlace.next('');
   }

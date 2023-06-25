@@ -1,5 +1,8 @@
 <div class="container">
   <ng-container *ngIf="searchedPlace | async as searchedPlace">
+    <app-loading-spinner
+      *ngIf="!(sevenDaysWeatherData | async)"
+    ></app-loading-spinner>
     <div *ngIf="sevenDaysWeatherData | async as data">
       <div class="searched-place">{{ searchedPlace }}</div>
       <ng-container *ngFor="let day of data.daily; let i = index">
@@ -20,8 +23,6 @@
               alt="weather-icon"
               class="weather-icon"
             />
-            <!-- <div class="temp-and-icon"> -->
-
             <div class="min-max-temp">
               min {{ Math.trunc(day.temp?.min! - 273.15) }}&#8451; / max
               {{ Math.trunc(day.temp?.max! - 273.15) }}&#8451;

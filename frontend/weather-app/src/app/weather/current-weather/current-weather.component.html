@@ -1,5 +1,8 @@
 <div class="container">
   <ng-container *ngIf="searchedPlace | async as searchedPlace">
+    <app-loading-spinner
+      *ngIf="!(currentWeatherData | async)"
+    ></app-loading-spinner>
     <div *ngIf="currentWeatherData | async as data">
       <div class="searched-place">{{ searchedPlace }}</div>
       <div class="temp-and-icon">

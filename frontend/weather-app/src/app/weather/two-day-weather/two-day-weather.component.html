@@ -1,5 +1,8 @@
 <div class="container">
   <ng-container *ngIf="searchedPlace | async as searchedPlace">
+    <app-loading-spinner
+      *ngIf="!(twoDaysWeatherData | async)"
+    ></app-loading-spinner>
     <div *ngIf="twoDaysWeatherData | async as data">
       <div class="searched-place">{{ searchedPlace }}</div>
       <ng-container *ngFor="let day of data.hourly; let i = index">
