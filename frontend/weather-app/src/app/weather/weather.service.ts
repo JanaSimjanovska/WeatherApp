@@ -41,10 +41,7 @@ export class WeatherService {
         latitude: coordinates.latitude,
         longitude: coordinates.longitude,
       })
-      .subscribe((value) => {
-        this.oneHourWeather.next(value);
-        console.log('WHAT DO I GET BACK', value);
-      });
+      .subscribe((value) => this.oneHourWeather.next(value));
   }
 
   getTwoDayForecast(coordinates: Coordinates) {
