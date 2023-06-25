@@ -5,13 +5,18 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { User } from './user.model';
+import { WeatherService } from '../weather/weather.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   user = new BehaviorSubject<User | null>(null);
   private tokenExpirationTimer: any;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private weatherService: WeatherService
+  ) {}
 
   register(
     firstName: string,
@@ -51,7 +56,6 @@ export class AuthService {
       expirationDate
     );
     this.user.next(loggedInUser);
-    console.log(this.user);
 
     localStorage.setItem('userData', JSON.stringify(loggedInUser));
   }
@@ -122,30 +126,15 @@ export class AuthService {
       clearTimeout(this.tokenExpirationTimer);
     }
     this.tokenExpirationTimer = null;
+    this.weatherService.currentWeather.next(null);
+    this.weatherService.sevenDaysWeather.next(null);
+    this.weatherService.weatherForecastMode.next(null);
+    this.weatherService.searchedPlace.next('');
   }
 
   autoLogout(expirationDuration: number) {
-    console.log(expirationDuration);
-
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
     }, expirationDuration);
   }
-
-  //   private handleError(errorResponse: HttpErrorResponse) {
-  //     let errorMessage = 'An unknown error occurred!';
-  //     if (!errorResponse.error || !errorResponse.error.error) {
-  //       return throwError(errorMessage);
-  //     }
-  //     switch (errorResponse.error.error.message) {
-  //       case 'EMAIL_EXISTS':
-  //         errorMessage = 'This email already exists';
-  //         break;
-  //       case 'EMAIL_NOT_FOUND':
-  //       case 'INVALID_PASSWORD':
-  //         errorMessage = 'Incorrect auth info';
-  //         break;
-  //     }
-  //     return throwError(errorMessage);
-  //   }
 }

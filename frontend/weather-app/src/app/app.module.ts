@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +18,15 @@ import { TwoDayWeatherComponent } from './weather/two-day-weather/two-day-weathe
 import { SevenDayWeatherComponent } from './weather/seven-day-weather/seven-day-weather.component';
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, WeatherComponent, CurrentWeatherComponent, HourlyWeatherComponent, TwoDayWeatherComponent, SevenDayWeatherComponent],
+  declarations: [
+    AppComponent,
+    AuthComponent,
+    WeatherComponent,
+    CurrentWeatherComponent,
+    HourlyWeatherComponent,
+    TwoDayWeatherComponent,
+    SevenDayWeatherComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -25,6 +34,7 @@ import { SevenDayWeatherComponent } from './weather/seven-day-weather/seven-day-
     SharedModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
+    NgApexchartsModule,
   ],
   providers: [
     {

@@ -37,12 +37,11 @@ export class AuthComponent implements OnDestroy {
     if (this.isLoginMode) {
       this.closeSub = this.authService.login(username, password).subscribe({
         next: (data) => {
-          console.log(data);
+          data;
           this.isLoading = false;
           this.router.navigate(['/']);
         },
         error: (err) => {
-          console.log(err);
           this.messageForUser = err.error;
           this.isLoading = false;
         },
@@ -53,14 +52,12 @@ export class AuthComponent implements OnDestroy {
 
         .subscribe({
           next: (data) => {
-            console.log(data);
             this.messageForUser =
               'You have successfully registered. Go ahead and login with your username and password.';
             this.isLoginMode = !this.isLoginMode;
             this.isLoading = false;
           },
           error: (err) => {
-            console.log(err);
             this.messageForUser = err.error;
             this.isLoading = false;
           },

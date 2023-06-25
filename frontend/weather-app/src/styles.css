@@ -3,7 +3,54 @@
 
 .info {
   margin-top: 30px;
-  background-color: rgb(185, 233, 252);
+  /* background-color: rgb(185, 233, 252); */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 5px;
   padding: 10px;
   border-radius: 5px;
+  font-weight: 400;
+}
+
+body {
+  background-image: url("./assets/lukasz-lada-LtWFFVi1RXQ-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.temp-and-icon {
+  display: flex;
+  align-items: center;
+  font-size: larger;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.date {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.searched-place {
+  font-size: larger;
+}
+
+.weather-icon {
+  width: 40px;
+  height: auto;
+}
+
+.bottom-border-separator {
+  border-bottom: 0.8px solid rgb(92, 92, 92);
 }

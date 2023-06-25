@@ -73,14 +73,18 @@
     </div>
     <div class="button-group">
       <button
-        class="btn btn-primary"
+        class="btn btn-outline-light"
         type="submit"
         [disabled]="!authForm.valid"
       >
         {{ isLoginMode ? "Login" : "Register" }}
       </button>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <button class="btn btn-primary" (click)="onSwitchMode()" type="button">
+      <button
+        class="btn btn-outline-light"
+        (click)="onSwitchMode()"
+        type="button"
+      >
         Switch to {{ isLoginMode ? "Register" : "Login" }}
       </button>
     </div>

@@ -16,6 +16,7 @@ export class LocationSearchComponent implements OnInit {
   suggestionsFilter: any;
   coordinates: Coordinates;
   messageForUser = '';
+  searchedPlaceFormatted = '';
 
   constructor(private weatherService: WeatherService) {}
 
@@ -27,8 +28,7 @@ export class LocationSearchComponent implements OnInit {
         longitude: event.properties.lon.toString(),
         latitude: event.properties.lat.toString(),
       };
-      console.log(this.coordinates);
-      console.log(event.properties.formatted);
+      this.weatherService.searchedPlace.next(event.properties.formatted);
     } else {
       return;
     }
@@ -54,6 +54,7 @@ export class LocationSearchComponent implements OnInit {
         break;
     }
     this.weatherService.weatherForecastMode.next(forecastMode);
+    this.messageForUser = '';
   }
 
   getCurrentWeather() {
