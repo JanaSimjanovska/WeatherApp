@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
-import { Subscription } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import { ForecastMode } from '../weather.component';
 import { CurrentWeatherData } from '../weather-data.models';
 
@@ -13,6 +13,10 @@ export class CurrentWeatherComponent implements OnInit {
   constructor(private weatherService: WeatherService) {}
 
   currentWeatherData = this.weatherService.currentWeather;
+  searchedPlace = this.weatherService.searchedPlace;
+  weatherIconBaseUrl = this.weatherService.weatherIconsBaseUrl;
+  weatherIcon: string | undefined = '';
+  Math = Math;
 
   ngOnInit(): void {}
 }

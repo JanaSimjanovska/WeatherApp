@@ -1,1 +1,32 @@
-<p>two-day-weather works!</p>
+<div class="container">
+  <ng-container *ngIf="searchedPlace | async as searchedPlace">
+    <div *ngIf="twoDaysWeatherData | async as data">
+      <div class="searched-place">{{ searchedPlace }}</div>
+      <ng-container *ngFor="let day of data.hourly; let i = index">
+        <div
+          [ngClass]="{
+            'bottom-border-separator': i !== data.hourly!.length - 1
+          }"
+          class="flex"
+        >
+          <div class="left">
+            <div class="date">{{ day.dt! * 1000 | date : "h:mm a" }}</div>
+            <img
+              [src]="
+                day.weather && day.weather.length !== 0
+                  ? weatherIconBaseUrl + day.weather![0].icon + '@2x.png'
+                  : ''
+              "
+              alt="weather-icon"
+              class="weather-icon"
+            />
+            <div class="min-max-temp">
+              {{ Math.trunc(day.temp! - 273.15) }}&#8451;
+            </div>
+          </div>
+          <div class="description">{{ day.weather![0].main }}</div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

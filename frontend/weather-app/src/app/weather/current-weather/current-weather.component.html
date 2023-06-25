@@ -1,12 +1,26 @@
 <div class="container">
-  <img
-    src="../../../assets/clouds.png"
-    alt="weather-icon"
-    class="weather-icon"
-  />
-  <div class="current-temperature">21&#8451;</div>
-
-  <div *ngIf="currentWeatherData | async as data">
-    {{ data.current?.clouds }}
-  </div>
+  <ng-container *ngIf="searchedPlace | async as searchedPlace">
+    <div *ngIf="currentWeatherData | async as data">
+      <div class="searched-place">{{ searchedPlace }}</div>
+      <div class="temp-and-icon">
+        <div class="current-temperature">
+          {{ Math.trunc(data.current?.temp! - 273.15) }}&#8451;
+        </div>
+        <img
+          [src]="
+            data.current?.weather && data.current?.weather?.length !== 0
+              ? weatherIconBaseUrl +
+                (data.current?.weather)![0].icon +
+                '@2x.png'
+              : ''
+          "
+          alt="weather-icon"
+          class="weather-icon"
+        />
+      </div>
+      <div class="feels-like">
+        Feels like {{ Math.trunc(data.current?.feels_like! - 273.15) }}&#8451;
+      </div>
+    </div>
+  </ng-container>
 </div>

@@ -1,4 +1,12 @@
 .forecast-view {
-  width: 50%;
+  width: 40%;
   margin: auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 5px;
+}
+
+.forecast-mode-text {
+  margin: 10px;
+  color: wheat;
 }

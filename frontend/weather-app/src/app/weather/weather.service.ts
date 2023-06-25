@@ -3,16 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { Coordinates } from '../shared/location-search/location-search.component';
 import { BehaviorSubject } from 'rxjs';
 import { ForecastMode } from './weather.component';
-import { CurrentWeatherData } from './weather-data.models';
+import {
+  CurrentWeatherData,
+  OneHourWeatherData,
+  SevenDaysWeatherData,
+  TwoDaysWeatherData,
+} from './weather-data.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherService {
-  weatherForecastMode = new BehaviorSubject<ForecastMode>(
-    ForecastMode.currentWeather
-  );
+  weatherForecastMode = new BehaviorSubject<ForecastMode | null>(null);
   currentWeather = new BehaviorSubject<CurrentWeatherData | null>(null);
+  oneHourWeather = new BehaviorSubject<OneHourWeatherData | null>(null);
+  twoDaysWeather = new BehaviorSubject<TwoDaysWeatherData | null>(null);
+  sevenDaysWeather = new BehaviorSubject<SevenDaysWeatherData | null>(null);
+  searchedPlace = new BehaviorSubject<string>('');
 
   weatherAPIBaseUrl = 'http://localhost:27191/api/weather';
   weatherIconsBaseUrl = 'https://openweathermap.org/img/wn/';
@@ -34,7 +41,10 @@ export class WeatherService {
         latitude: coordinates.latitude,
         longitude: coordinates.longitude,
       })
-      .subscribe((x) => console.log('WHAT DO I GET BACK', x));
+      .subscribe((value) => {
+        this.oneHourWeather.next(value);
+        console.log('WHAT DO I GET BACK', value);
+      });
   }
 
   getTwoDayForecast(coordinates: Coordinates) {
@@ -43,7 +53,7 @@ export class WeatherService {
         latitude: coordinates.latitude,
         longitude: coordinates.longitude,
       })
-      .subscribe((x) => console.log('WHAT DO I GET BACK', x));
+      .subscribe((value) => this.twoDaysWeather.next(value));
   }
 
   getSevenDayForecast(coordinates: Coordinates) {
@@ -52,6 +62,6 @@ export class WeatherService {
         latitude: coordinates.latitude,
         longitude: coordinates.longitude,
       })
-      .subscribe((x) => console.log('WHAT DO I GET BACK', x));
+      .subscribe((value) => this.sevenDaysWeather.next(value));
   }
 }

@@ -1,8 +1,20 @@
 <app-location-search> </app-location-search>
 <div class="forecast-view">
   <div class="forecast-mode">
-    {{ forecastMode ? (forecastMode.toString() | uppercase) : "" }}
-    <app-current-weather></app-current-weather>
-    <app-hourly-weather></app-hourly-weather>
+    <div class="forecast-mode-text">
+      {{ forecastMode ? (forecastMode.toString() | uppercase) : "" }}
+    </div>
+    <app-current-weather
+      *ngIf="forecastMode === ForecastMode.currentWeather"
+    ></app-current-weather>
+    <app-hourly-weather
+      *ngIf="forecastMode === ForecastMode.hourlyWeather"
+    ></app-hourly-weather>
+    <app-two-day-weather
+      *ngIf="forecastMode === ForecastMode.twoDaysWeather"
+    ></app-two-day-weather>
+    <app-seven-day-weather
+      *ngIf="forecastMode === ForecastMode.sevenDaysWeather"
+    ></app-seven-day-weather>
   </div>
 </div>

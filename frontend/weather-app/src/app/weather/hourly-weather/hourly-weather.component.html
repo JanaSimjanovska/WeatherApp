@@ -1,1 +1,22 @@
-<p>hourly-weather works!</p>
+<div class="container">
+  <ng-container *ngIf="searchedPlace | async as searchedPlace">
+    <div *ngIf="oneHourWeatherData | async as data">
+      <div class="searched-place">{{ searchedPlace }}</div>
+
+      <ng-container *ngFor="let day of data.minutely; let i = index">
+        <div
+          [ngClass]="{
+            'bottom-border-separator': i !== data.minutely!.length - 1
+          }"
+          class="flex"
+        >
+          <div class="date">{{ day.dt! * 1000 | date : "h:mm a" }}</div>
+          <div>
+            <img src="../../../assets/drop.png" class="weather-icon" />
+            {{ day.precipitation }} mm/h
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

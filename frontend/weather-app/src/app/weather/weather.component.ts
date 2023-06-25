@@ -21,8 +21,9 @@ export enum ForecastMode {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WeatherComponent implements OnInit {
-  forecastMode: ForecastMode;
+  forecastMode: ForecastMode | null;
   private closeSub: Subscription;
+  ForecastMode = ForecastMode;
 
   constructor(private weatherService: WeatherService) {}
 

@@ -22,20 +22,20 @@ export interface Weather {
 }
 
 export interface Minutely {
-  time?: Date;
+  dt?: number;
   precipitation?: number;
 }
 
 export interface Daily {
   clouds?: number;
-  feelsLike?: FeelsLike;
+  feels_like?: FeelsLike;
   weather?: Weather[];
-  windDeg?: number;
-  windSpeed?: number;
+  wind_deg?: number;
+  wind_speed?: number;
   temp?: Temperature;
   humidity?: number;
   pressure?: number;
-  time?: Date;
+  dt?: number;
   uvi?: number;
   rain?: number;
   summary?: string;
@@ -59,13 +59,13 @@ export interface FeelsLike {
 
 export interface Current {
   clouds?: number;
-  feelsLike?: number;
+  feels_like?: number;
   weather?: Weather[];
-  windDeg?: number;
-  windSpeed?: number;
+  wind_deg?: number;
+  wind_speed?: number;
   temp?: number;
   humidity?: number;
   pressure?: number;
-  time?: Date;
+  dt?: number;
   uvi?: number;
 }
