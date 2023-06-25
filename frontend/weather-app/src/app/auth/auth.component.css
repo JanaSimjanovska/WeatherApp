@@ -1,4 +1,10 @@
-.center {
-  margin: auto;
-  max-width: 720px;
+.auth-component-container {
+  margin: 50px auto;
+  max-width: 50%;
+}
+
+.button-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }

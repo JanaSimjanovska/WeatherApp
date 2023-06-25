@@ -1,0 +1,12 @@
+header {
+  height: 70px;
+  border-bottom: 1px solid rgb(175, 175, 175);
+  padding: 10px 0;
+}
+
+.user-auth {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

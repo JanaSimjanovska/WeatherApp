@@ -1,26 +1,42 @@
 <div class="container">
   <geoapify-geocoder-autocomplete
+    class="center"
     [skipIcons]="false"
     [skipDetails]="false"
     [suggestionsFilter]="suggestionsFilter"
     (placeSelect)="placeSelected($event)"
-    (suggestionsChange)="suggestionsChanged($event)"
-    (userInput)="userInput($event)"
   >
   </geoapify-geocoder-autocomplete>
 
   <div class="button-group">
-    <button type="button" class="btn btn-info margin-bottom">
+    <button
+      type="button"
+      class="btn btn-outline-dark margin-bottom"
+      (click)="getCurrentWeather()"
+    >
       Get current weather
     </button>
-    <button type="button" class="btn btn-info margin-bottom">
+    <button
+      type="button"
+      class="btn btn-outline-dark margin-bottom"
+      (click)="getOneHourForecast()"
+    >
       Get 1 hour weather forecast
     </button>
-    <button type="button" class="btn btn-info margin-bottom">
+    <button
+      type="button"
+      class="btn btn-outline-dark margin-bottom"
+      (click)="getTwoDayForecast()"
+    >
       Get 2 days weather forecast
     </button>
-    <button type="button" class="btn btn-info margin-bottom">
+    <button
+      type="button"
+      class="btn btn-outline-dark margin-bottom"
+      (click)="getSevenDayForecast()"
+    >
       Get 7 days weather forecast
     </button>
   </div>
+  <div class="info" *ngIf="messageForUser">{{ messageForUser }}</div>
 </div>

@@ -1,32 +1,23 @@
-import {
-  Component,
-  ComponentFactoryResolver,
-  OnDestroy,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { AuthResponseData, AuthService } from './auth.service';
-import { HttpResponse } from '@angular/common/http';
-import { error } from 'console';
+import { Subscription } from 'rxjs';
+import { AuthService } from './auth.service';
+import { log } from 'console';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnDestroy {
   isLoginMode = true;
   isLoading = false;
-  messageForUser: string = '';
+  messageForUser = `Welcome to our awesome weather forecast app :) Please login to use it, or register if you don't already have an account.`;
 
   private closeSub: Subscription;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private componentFactoryResolver: ComponentFactoryResolver
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -44,11 +35,11 @@ export class AuthComponent implements OnDestroy {
 
     this.isLoading = true;
     if (this.isLoginMode) {
-      this.authService.login(username, password).subscribe({
+      this.closeSub = this.authService.login(username, password).subscribe({
         next: (data) => {
           console.log(data);
           this.isLoading = false;
-          // this.router.navigate(['/']); Pomisli dali da te prenasochuva koa se logirash uspeshno
+          this.router.navigate(['/']);
         },
         error: (err) => {
           console.log(err);
@@ -57,7 +48,7 @@ export class AuthComponent implements OnDestroy {
         },
       });
     } else {
-      this.authService
+      this.closeSub = this.authService
         .register(firstName, lastName, username, password, confirmedPassword)
 
         .subscribe({

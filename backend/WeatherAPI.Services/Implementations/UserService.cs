@@ -23,12 +23,12 @@ namespace WeatherAPI.Services.Implementations
     public class UserService : IUserService<User>
     {
         private IUserRepository<User> _userRepository;
-        private IOptions<AppSettings> _options;
+        //private IOptions<AppSettings> _options; // Doesn't work this way anymore
 
         public UserService(IUserRepository<User> userRepository, IOptions<AppSettings> options)
         {
             _userRepository = userRepository;
-            _options = options;
+            //_options = options;
         }
 
 

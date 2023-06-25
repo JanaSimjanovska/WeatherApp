@@ -1,0 +1,12 @@
+<div class="container">
+  <img
+    src="../../../assets/clouds.png"
+    alt="weather-icon"
+    class="weather-icon"
+  />
+  <div class="current-temperature">21&#8451;</div>
+
+  <div *ngIf="currentWeatherData | async as data">
+    {{ data.current?.clouds }}
+  </div>
+</div>

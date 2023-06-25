@@ -1,2 +1,9 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~@geoapify/geocoder-autocomplete/styles/minimal.css";
+
+.info {
+  margin-top: 30px;
+  background-color: rgb(185, 233, 252);
+  padding: 10px;
+  border-radius: 5px;
+}
